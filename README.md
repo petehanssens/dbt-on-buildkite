@@ -1,5 +1,5 @@
 # dbt-on-buildkite
-running dbt from buildkite
+running dbt from buildkite and generating dbt docs to be served on netlify
 
 
 
