@@ -11,11 +11,25 @@ running dbt from buildkite and generating dbt docs to be served on netlify
 7. A good understanding of AWS at an AWS ASA cert level
 
 
-## Steps to build this
+## Steps to setup buildkite
 1. Create your elastic CI stack for buildkite on AWS [here](https://buildkite.com/docs/tutorials/elastic-ci-stack-aws)
-2. 
+2. Create an EC2 pem file and upload it to the buildkite secrets bucket
+3. Either create or copy a github public key to the buildkite secrets bucket
+4. Create a pipeline in buildkite
+5. Add a webhook to your github repository
+6. Put the following in the build command: `buildkite-agent pipeline upload .buildkite/deploy.yml`
 
-### putting secure string ssm parameters into aws using cli
+## Setting up netlify
+1. Create a manual deploy site [here](https://www.netlify.com/docs/manual-deploys/)
+2. Get the site id and update the `netlify.toml` file with the id
+3. Create a netlify access token
+
+## Create the Redshift Cluster
+1. Go to your AWS Account and deploy the `redshift-cf.yaml` template
+2. Copy down the password for safe keeping
+
+
+## Deploy the Redshift cluster password and Netlify access token using the following CLI call
 aws ssm put-parameter --region ap-southeast-2 --name MyParameter --value "secret_value" --type SecureString
 
 
