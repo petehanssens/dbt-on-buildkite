@@ -4,7 +4,7 @@ running dbt from buildkite
 
 
 ### putting secure string ssm parameters into aws using cli
-aws ssm put-parameter --name MyParameter --value "secret_value" --type SecureString
+aws ssm put-parameter --region ap-southeast-2 --name MyParameter --value "secret_value" --type SecureString
 
 
 

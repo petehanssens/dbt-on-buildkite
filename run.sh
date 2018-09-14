@@ -5,7 +5,7 @@ password=$(aws ssm get-parameter --region ap-southeast-2 --name "/shared/redshif
 sed --in-place "s/new_password/$password/" "/root/.dbt/profiles.yml"
 
 dbt run 
-dbt generate docs
+dbt docs generate
 token=$(aws ssm get-parameter --region us-east-1 --name "/shared/netlify" --with-decryption --query "Parameter.Value" | tr -d \")
 echo 'Running netlifyctl: '
 ./netlifyctl -A $token deploy
