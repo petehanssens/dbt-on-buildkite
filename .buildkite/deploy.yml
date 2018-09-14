@@ -1,0 +1,12 @@
+steps:
+  - label: Run Command
+    command: "./run.sh"
+    plugins:
+      - docker-compose#v2.0.0:
+          run: dbt_ubuntu
+          env:
+            - AWS_ACCESS_KEY_ID
+            - AWS_SECRET_ACCESS_KEY
+            - AWS_SESSION_TOKEN
+            - AWS_REGION=us-east-1
+            - ACG_ENV
